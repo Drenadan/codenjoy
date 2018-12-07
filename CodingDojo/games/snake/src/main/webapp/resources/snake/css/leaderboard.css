@@ -48,3 +48,7 @@
 canvas {
     width:400px!important;
 }
+
+.label-primary {
+    background-color: #1e1e1e!important;
+}
