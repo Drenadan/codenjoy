@@ -121,8 +121,10 @@ public class PlayerGames implements Iterable<PlayerGame>, Tickable {
     }
 
     JSONObject parseSave(PlayerSave save) {
-        String saveString = (save == null || save.getSave() == null) ? "{}" : save.getSave();
-        return new JSONObject(saveString);
+        if (save == null || PlayerSave.isSaveNull(save.getSave())) {
+            return new JSONObject();
+        }
+        return new JSONObject(save.getSave());
     }
 
     private List<PlayerGame> removeAndLeaveAlone(Game game) {
@@ -261,5 +263,15 @@ public class PlayerGames implements Iterable<PlayerGame>, Tickable {
             progress.change(level);
             reload(game, progress.saveTo(new JSONObject()));
         }
+    }
+
+    public void setLevel(String playerName, JSONObject save) { // TODO test me
+        PlayerGame playerGame = get(playerName);
+        Game game = playerGame.getGame();
+        reload(game, save);
+    }
+
+    public PlayerGame get(int index) { // TODO test me
+        return playerGames.get(index);
     }
 }
