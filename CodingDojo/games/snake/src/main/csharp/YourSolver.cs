@@ -19,28 +19,34 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-﻿using System;
+using SnakeClient;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SnakeClient
 {
-    internal class YourSolver
+    /// <summary>
+    /// This is Snake client.
+    /// </summary>
+    internal class YourSolver : AbstractSolver
     {
-        public string DisplayText { get; private set; }
-        public string CommandText { get; private set; }
-
-        public string Process(string input)
+        public YourSolver(string server)
+            : base(server)
         {
-            Board board = new Board();
-            board.Parse(input);
-            DisplayText = board.GetDisplay();
+        }
+
+        /// <summary>
+        /// Calls each move to make decision what to do (next move)
+        /// </summary>
+        protected internal override string Get(Board board)
+        {
 
             // TODO write your AI code here
 
-            return "UP";
+            return Direction.Up.ToString();
         }
+
     }
+
+
+
 }

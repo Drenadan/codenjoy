@@ -39,6 +39,7 @@ namespace SnakeClient
 
             // creating custom Snake's Ai client
 
+
             var snake = new YourSolver(ServerUrl);
 
             // starting thread with playing Snake

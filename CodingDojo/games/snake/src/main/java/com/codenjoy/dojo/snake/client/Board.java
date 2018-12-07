@@ -31,8 +31,6 @@ import com.codenjoy.dojo.snake.model.Elements;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.codenjoy.dojo.services.PointImpl.pt;
-
 public class Board extends AbstractBoard<Elements> {
 
     @Override
@@ -78,10 +76,6 @@ public class Board extends AbstractBoard<Elements> {
         }
     }
 
-    public boolean isBarrierAt(int x, int y) {
-        return getBarriers().contains(pt(x, y));
-    }
-
     public List<Point> getBarriers() {
         List<Point> result = getSnake();
         result.addAll(getStones());
@@ -109,8 +103,8 @@ public class Board extends AbstractBoard<Elements> {
         return result;
     }
 
-    public boolean isSnakeAlive() {
-        return getHead() != null;
+    public boolean isGameOver() {
+        return getHead() == null;
     }
 
     @Override

@@ -91,7 +91,7 @@ public class AISolver implements Solver<Board> {
     @Override
     public String get(final Board board) {
         this.board = board;
-        if (!board.isSnakeAlive()) return "";
+        if (board.isGameOver()) return "";
         List<Direction> result = getWay();
         if (result.isEmpty()) return "";
         return result.get(0).toString();
